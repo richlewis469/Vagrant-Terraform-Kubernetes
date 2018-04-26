@@ -1,0 +1,6 @@
+# References:
+#    https://github.com/oracle/terraform-provider-oci
+
+providers {
+  oci = "/usr/bin/terraform-provider-oci"
+  }
