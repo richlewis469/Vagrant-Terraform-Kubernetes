@@ -6,7 +6,5 @@ provider "oci" {
   user_ocid        = "${var.user_ocid}"
   fingerprint      = "${var.fingerprint}"
   private_key_path = "${var.private_key_path}"
-
-  #private_key = "${var.private_key}"
-  region = "${var.region}"
+  region           = "${var.region}"
 }

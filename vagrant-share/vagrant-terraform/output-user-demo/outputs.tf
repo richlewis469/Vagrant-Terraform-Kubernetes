@@ -4,11 +4,11 @@
 #    https://github.com/oracle/terraform-provider-oci/blob/master/docs/datasources/identity/user.md
 
 output "user_id" {
-  value = "${lookup(data.oci_identity_users.Users.users[25], "name")}"
+  value = "${lookup(data.oci_identity_users.Users.users[1], "name")}"
 }
 
 output "user_id_data" {
-  value = "${data.oci_identity_users.Users.users[25]}"
+  value = "${data.oci_identity_users.Users.users[1]}"
 }
 
 output "number_of_user_ids" {

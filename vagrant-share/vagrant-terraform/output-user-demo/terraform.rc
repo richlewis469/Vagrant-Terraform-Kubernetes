@@ -2,5 +2,5 @@
 #    https://github.com/oracle/terraform-provider-oci
 
 providers {
-  oci = "/usr/bin/terraform-provider-oci"
+  oci = "/usr/bin/terraform-provider-oci_v2.1.6"
   }
