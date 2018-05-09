@@ -3,6 +3,19 @@
 echo " "
 echo "Executing /vagrant-share/vagrant-terraform/Terraform"
 
+# https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/credentials.htm
+# yum install openssh --assumeyes
+
+# API Signing Key
+# openssl genrsa -out /vagrant-share/.oci-auth/oci_api_key.pem 2048
+# chmod go-rwx /vagrant-share/.oci-auth/oci_api_key.pem
+# openssl rsa -pubout -in /vagrant-share/.oci-auth/oci_api_key.pem -out /vagrant-share/.oci-auth/oci_api_key_public.pem
+# openssl rsa -pubout -outform DER -in /vagrant-share/.oci-auth/oci_api_key.pem | openssl md5 -c >> /vagrant-share/.oci-auth/oci_api_key_public.fingerprint
+
+# Create SSH Key pair
+# https://docs.us-phoenix-1.oraclecloud.com/Content/Compute/Tasks/managingkeypairs.htm
+# ssh-keygen -t rsa -N "" -b 2048 -C "oci_trial_ssh_key" -f /vagrant-share/.oci-auth/oci_trial_ssh_key
+
 echo "--Remove any trailing \r dos characters--"
 cd /vagrant-share
 for i in `find . -type f -print | file -f - | grep -v binary | grep -v gitkeep | grep CRLF | sed -e "s/\:.*$//"`; do
