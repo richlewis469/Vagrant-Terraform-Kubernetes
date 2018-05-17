@@ -38,21 +38,22 @@ for i in `ls -1`; do
     break
   fi
   echo "--Run output-user-demo terraform plan--"
-  terraform plan
+  terraform plan | tee terraform-plan.out
   if [ $? -ne 0 ] ; then
     break
   fi
   echo "--Run output-user-demo terraform apply--"
-  terraform apply
+  terraform apply -auto-approve | tee terraform-apply.out
   if [ $? -ne 0 ] ; then
     break
   fi
   echo "--Run output-user-demo terraform destroy--"
-  terraform destroy -auto-approve
+  terraform destroy -auto-approve | tee terraform-destroy.out
   if [ $? -ne 0 ] ; then
     #Sometimes we need sleep for a bit.
     sleep 30
-    terraform destroy -auto-approve
+    date >> terraform-destroy.out
+    terraform destroy -auto-approve | tee -a terraform-destroy.out
   fi
 done
 
