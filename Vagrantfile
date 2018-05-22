@@ -36,9 +36,13 @@ Vagrant.configure("2") do |config|
   # Enable provisioning of the client with a shell script.
   config.vm.provision "shell", path: "./vagrant-shell/provision.sh"
 
+  # Enable provisioning of Docker.
+  config.vm.provision "shell", path: "./vagrant-shell/docker.sh"
+
   # Enable provisioning of Terraform and Demo.
   config.vm.provision "shell", path: "./vagrant-shell/terraform.sh"
 
   # Enable provisioning of Kubernetes and Demo.
-  #config.vm.provision "shell", path: "./vagrant-shell/kubernetes.sh"
+  config.vm.provision "shell", path: "./vagrant-shell/kubernetes.sh"
+  
 end
