@@ -17,11 +17,11 @@ variable "NumInstances" {
 # NOTE: Changing this value after applying it could result in re-attaching existing volumes to different instances.
 # This is a result of using 'count' variables to specify the volume and instance IDs for the volume attachment resource.
 variable "NumIscsiVolumesPerInstance" {
-  default = "2"
+  default = "1"
 }
 
 variable "NumParavirtualizedVolumesPerInstance" {
-  default = "2"
+  default = "1"
 }
 
 # Choose an Availability Domain

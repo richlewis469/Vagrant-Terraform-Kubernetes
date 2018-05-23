@@ -32,28 +32,28 @@ for i in `ls -1`; do
     sed '/ocid=/s/\.\.\(.\{10\}\).*/\.\.\1\**************************************************/' | \
     sed '/fingerprint=/s/=\(.\{15\}\).*/=\1**:**:**:**:**:**:**:**:**:**:**/' | \
     sort
-  echo "--Run output-user-demo terraform init--"
+  echo "--Run $i terraform init--"
   terraform init
   if [ $? -ne 0 ] ; then
     break
   fi
-  echo "--Run output-user-demo terraform plan--"
-  terraform plan | tee terraform-plan.out
+  echo "--Run $i terraform plan--"
+  terraform plan
   if [ $? -ne 0 ] ; then
     break
   fi
-  echo "--Run output-user-demo terraform apply--"
-  terraform apply -auto-approve | tee terraform-apply.out
+  echo "--Run $i terraform apply--"
+  terraform apply -auto-approve
   if [ $? -ne 0 ] ; then
     break
   fi
-  echo "--Run output-user-demo terraform destroy--"
-  terraform destroy -auto-approve | tee terraform-destroy.out
+  echo "--Run $i terraform destroy--"
+  terraform destroy -auto-approve
   if [ $? -ne 0 ] ; then
     #Sometimes we need sleep for a bit.
     sleep 30
     date >> terraform-destroy.out
-    terraform destroy -auto-approve | tee -a terraform-destroy.out
+    terraform destroy -auto-approve
   fi
 done
 
